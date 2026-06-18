@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Цены</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <header><h1>Жилой Комплекс</h1></header>
+    <div class="main-container">
+        <aside class="sidebar">
+            <h3>Навигация</h3>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="fif.html" class="active">Цены</a></li>
+                <li><a href="jij.html">Заявка</a></li>
+            </ul>
+            <h3>Тема оформления</h3>
+            <ul>
+                <li><a href="#" data-theme="dark" class="active">Тёмная</a></li>
+                <li><a href="#" data-theme="light">Светлая</a></li>
+                <li><a href="#" data-theme="beige">Бежевая</a></li>
+            </ul>
+        </aside>
+        <div class="content-wrapper">
+            <h2>Цены на квартиры</h2>
+            <table class="price-table">
+                <tr>
+                    <th>Тип</th>
+                    <th>Площадь</th>
+                    <th>Цена</th>
+                </tr>
+                <tr><td>Студия</td><td>25-35 м²</td><td>от 4.5 млн ₽</td></tr>
+                <tr><td>1 комната</td><td>38-48 м²</td><td>от 6.2 млн ₽</td></tr>
+                <tr><td>2 комнаты</td><td>55-72 м²</td><td>от 8.9 млн ₽</td></tr>
+                <tr><td>3 комнаты</td><td>82-105 м²</td><td>от 12.5 млн ₽</td></tr>
+            </table>
+            <div class="info-box" style="text-align:center">
+                <p>Возможна ипотека от 4% годовых</p>
+                <p>+7 (123) 456-78-90</p>
+                <p>При полной оплате — скидка 5%</p>
+            </div>
+        </div>
+    </div>
+    <footer><p>Авторские права 2026</p></footer>
+    <script>
+// theme.js — корректное переключение тем с сохранением
+document.addEventListener('DOMContentLoaded', function() {
+    const themeLinks = document.querySelectorAll('[data-theme]');
+    const savedTheme = localStorage.getItem('siteTheme') || 'dark';
+
+    // Применяем сохранённую тему при загрузке
+    applyTheme(savedTheme);
+
+    // Навешиваем обработчики на все ссылки выбора темы
+    themeLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const theme = this.dataset.theme;
+            applyTheme(theme);
+            localStorage.setItem('siteTheme', theme);
+        });
+    });
+
+    function applyTheme(theme) {
+        // Меняем класс на body
+        document.body.className = theme;
+
+        // Обновляем активные пункты в меню темы
+        themeLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.dataset.theme === theme) {
+                link.classList.add('active');
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>
