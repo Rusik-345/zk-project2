@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жилой Комплекс — Главная</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+
+<header>
+    <h1>Жилой Комплекс</h1>
+</header>
+
+<div class="main-container">
+    <aside class="sidebar">
+        <h3>Навигация</h3>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="fif.html">Цены</a></li>
+            <li><a href="jij.html">Заявка</a></li>
+        </ul>
+        <h3>Тема оформления</h3>
+        <ul>
+            <li><a href="#" data-theme="dark" class="active">Тёмная</a></li>
+            <li><a href="#" data-theme="light">Светлая</a></li>
+            <li><a href="#" data-theme="beige">Бежевая</a></li>
+        </ul>
+    </aside>
+
+    <main class="content-wrapper">
+        <h2>Жилой Комплекс</h2>
+        <p style="text-align: center;">Современный квартал в центре города</p>
+
+        <img src="lol/jiji.jpg" alt="Вид на жилой комплекс">
+
+        <p style="text-align: center;">Лучшие условия для жизни с семьёй и в одиночку</p>
+        <p style="text-align: center;">Десять лет стажа активной застройки. Тысячи положительных отзывов.</p>
+
+        <section class="info-box">
+            <h3>Преимущества проживания</h3>
+            <p>Уютные дворы без машин, детские и спортивные площадки</p>
+            <p>Рядом школы, сады, парки и развитая городская инфраструктура</p>
+            <p>Круглосуточная охрана, видеонаблюдение и система контроля доступа</p>
+            <p>Энергоэффективные технологии и современные материалы</p>
+            <p>Квартиры с готовой отделкой и свободной планировкой — на любой вкус</p>
+            <p>Закрытая территория с ландшафтным дизайном и зонами для отдыха</p>
+            <p>Собственный детский сад и школа в шаговой доступности</p>
+            <img src="lol/fer.jpg" alt="Территория комплекса">
+        </section>
+
+        <section class="info-box">
+            <h3>Расположение и транспортная доступность</h3>
+            <p>Жилой комплекс расположен в экологически чистом районе города, в 10 минутах езды от центра. Ближайшая станция метро находится в 15 минутах пешком. Развитая сеть общественного транспорта позволяет быстро добраться до любой точки города. Рядом проходят основные транспортные магистрали, что обеспечивает удобный выезд на загородные трассы.</p>
+            <p>В непосредственной близости находятся торговые центры, супермаркеты, аптеки, банки, фитнес-клубы и рестораны. Для любителей активного отдыха рядом расположен городской парк с велодорожками и лыжной трассой в зимнее время.</p>
+        </section>
+    </main>
+</div>
+
+<footer>
+    <p>Авторские права 2026</p>
+</footer>
+
+<script>
+// theme.js — корректное переключение тем с сохранением
+document.addEventListener('DOMContentLoaded', function() {
+    const themeLinks = document.querySelectorAll('[data-theme]');
+    const savedTheme = localStorage.getItem('siteTheme') || 'dark';
+
+    // Применяем сохранённую тему при загрузке
+    applyTheme(savedTheme);
+
+    // Навешиваем обработчики на все ссылки выбора темы
+    themeLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const theme = this.dataset.theme;
+            applyTheme(theme);
+            localStorage.setItem('siteTheme', theme);
+        });
+    });
+
+    function applyTheme(theme) {
+        // Меняем класс на body
+        document.body.className = theme;
+
+        // Обновляем активные пункты в меню темы
+        themeLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.dataset.theme === theme) {
+                link.classList.add('active');
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>
